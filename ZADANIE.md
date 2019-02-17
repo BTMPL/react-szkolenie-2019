@@ -1,14 +1,15 @@
-# #5 Używanie JS w komponentach
+# #7 Przekazywanie danych do komponentu
+
+## Wprowadzenie
+
+- dostęp do danych globalnych nie jest bezpieczny ani wydajny
 
 ## Zadanie
 
-- zapisz imię w zmiennej lokalnej w komponencie `Message` i wyświetl zamiast zapisanego na sztywno
-- w elemencie `<time>` wyświetl bieżącą godzinę i minutę (w formacie `HH:MM`)
+- przekaż dane (`userName`, `userAvatar`) do komponentu `Tweet` jako parametry
+- komponent `Tweet` powinien przekazać je dalej do `UserDetails`
 
-## Podpowiedź
+  - pamiętaj, że do "przełączenia się w tryb JS" używamy znaczników {}
+  - parametry będą dostępne jako pierwszy parametr (Obiekt) przekazany do komponentu
 
-Nie używaj bibliotek do generowania daty. Możesz użyć `getHours()` i `getMinutes()` z obiektu `Date`.
-
-## Bonus
-
-Nie używaj zmiennych do wygenerowania daty - zrób to bezpośrednio w JSX!
+- przekaż treść tweetu jako parametr (`text`) do komponentu `Tweet`
