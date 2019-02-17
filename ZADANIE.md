@@ -1,21 +1,31 @@
-# #8 propTypes i defaulltProps
+# #9 Renderowanie list komponentów
 
-Używanie propTypes stanowi rodzaj dokumentacji komponentu, przydatne jeżeli nie używamy np. TypeScript ale także kiedy chcemy udokumentować nasz komponent np. w react-styleguidist
+Do tej pory dane w komponencie `App` były zapisane na sztywno i renderował on w komponenty `Message` również w oparciu o zapisane na sztywno dane.
 
-Używanie defaultProps może uchronić nas przed problemami z wyświetlaniem "undefined" lub próbami dostępu do metod na `undefined`.
+Dodajmy do pliku `src/index.js` tablicę danych:
+
+```js
+const data = [
+  {
+    userName: "BTM",
+    time: new Date(),
+    message: "Witaj na szkoleniach z React!"
+  },
+  {
+    userName: "Gość",
+    time: new Date(),
+    message: "Hej!"
+  }
+];
+```
+
+(oczywiście możesz dodać więcej i własne dane).
 
 ## Zadanie
 
-Dodaj odpowiednie propTypes dla komponentu `Message`
+- przekaż tablicę obiektów jako prop `data` do komponentu `App`
+- wyświetl wszystkie dane przy użyciu komponentu `Message`
 
-- sprawdź dostępne typy na [na stronie projektu](https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes) - które z nich są właściwe?
+## Bonus
 
-- dodaj defaultProps do komponentu `Message`:
-
-  - userName - domyślnie "Anonim"
-
-- usuń userName z renderowania `Message` i sprawdź, czy działa poprawnie
-
-## Podpowiedź
-
-Nie musisz instalować modułu `PropTypes`, jest on domyślnie instalowany wraz z modułem `react`.
+Zdefiniuj `propTypes` dla komponentu `App`. Jak można uniknąć powtarzania tych samych danych w `App` i `Message`?

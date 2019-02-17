@@ -1,11 +1,23 @@
 import React from "react";
 import { render } from "react-testing-library";
-import { Message } from "./Message.js";
+import { App } from "./App";
 
-test("Message poprawnie definuje propTypes", () => {
-  expect(Message.propTypes).not.toBeUndefined();
-});
+const data = [
+  {
+    userName: "BTM",
+    time: new Date(),
+    message: "Witaj na szkoleniach z React!"
+  },
+  {
+    userName: "Gość",
+    time: new Date(),
+    message: "Hej!"
+  }
+];
 
-test("Message poprawnie definuje defaultProps", () => {
-  expect(Message.defaultProps.userName).toMatch("Anonim");
+test("App oprawnie renderuje wszystkie przekazane dane", () => {
+  const { getByText } = render(<App data={data} />);
+  data.forEach(obj => {
+    getByText(obj.message);
+  });
 });
