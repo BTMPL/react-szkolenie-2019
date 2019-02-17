@@ -1,13 +1,8 @@
-# #14 Przekazywanie danych do rodzica
+# #15 Aktualizacja tablic w stanie
 
-Wiemy już jak przekazać dane z rodzica do dziecka - przekazywanie ich w drugą stronę jest nieco bardziej skomplikowane.
+Nasz komponent `App` ma już informacje o nowej wiadomości. Powinniśmy móc ją wyświetlić.
 
 ## Zadanie
 
-- zmodyfikuj komponent `App` tak, aby to on wywoływał `alert` z wartością wpisaną do `MessageForm`
-- pamiętaj o nie przekazywaniu "pustych" danych
-- nie wywołuj metody jeżeli nie została ona przekazana!
-
-## Bonus
-
-Pamiętaj o aktualizowaniu `propTypes` :)
+- tymczasowo skopiuj dane z `props.data` do `this.state.data` - w której metodzie cyklu życia to zrobić?
+- dodaj nowy obiekt opisujący wiadomość do `this.state.data` i wyświetl listę nowych wiadomości
