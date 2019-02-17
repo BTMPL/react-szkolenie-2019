@@ -1,17 +1,13 @@
-# #11 Dostęp do elementów DOM przy użyciu ref
+# #12 Komponenty klasowe
 
-Czasem potrzebujemy uzyskać dostęp do elementów DOM - np. odczytać dane z formularza nie koniecznie na skutek interakcji.
+Komponenty klasowe stają się mniej popularne wraz z wprowadzeniem React Hooks w wersji 16.8.0 - tym nie mniej, powinniśmy znać metodę ich działania. Nie tylko pozwoli nam ona pracować z nieco starszym kodem, ale pozwoli nam lepiej zrozumieć cykl życia komponentu.
 
 ## Zadanie
 
-- zmień element `MessageForm` tak, by był formularzem
-- w reakcji na próbę wysłania formularza przy użyciu klawisza Enter pobierz i wyświetl w `alert` dane z pola formularza
+- zmień komponent `MessageForm` na komponent klasowy
+- w komponentach klasowych NIE MOŻEMY używać React Hooks (np. `React.useHook`)
 
 ## Podpowiedź
 
-- reakcję na próbę wysłania formularza obsłuż w jego metodzie `onSubmit`
-  - pamiętaj, żeby powstrzymać faktyczne przesłanie formularza
-
-## Bonus
-
-Wyczyść pole formularza po wyświetleniu komunikatu w `alert`
+- aby utworzyć referencję, użyj `ref = React.createRef()` na zewnątrz metody `render` (ale wciąż w klasie!),
+- do `ref` następnie odwołuj się poprzez `this.ref`
