@@ -1,16 +1,18 @@
 import React from "react";
 import { render, fireEvent } from "react-testing-library";
 
-test("Przesłanie danych z formularza powoduje wyświetlenie ich jako listę", () => {
+test("Dla braku listy, ukrywa formularz i pokazuje stosowny komunikat", () => {
+  const App = require("./App").App;
+  const { getByText, container } = render(<App data={undefined} />);
+
+  getByText(/Trwa pobieranie danych/);
+  expect(container.querySelectorAll("input").length).toBe(0);
+});
+
+test("Dla pustej listy, wyświetla formularz i stosowny komunikat", () => {
   const App = require("./App").App;
   const { getByText, container } = render(<App data={[]} />);
 
-  fireEvent.change(container.querySelector("input"), {
-    target: {
-      value: "test log"
-    }
-  });
-  fireEvent.submit(container.querySelector("form"));
-
-  getByText("test log");
+  getByText(/Brak danych/);
+  expect(container.querySelectorAll("input").length).toBe(1);
 });

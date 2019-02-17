@@ -1,8 +1,8 @@
-# #15 Aktualizacja tablic w stanie
+# #15 Obsługa braku danych
 
-Nasz komponent `App` ma już informacje o nowej wiadomości. Powinniśmy móc ją wyświetlić.
+Nasz komponent powinien wiedzieć w jaki sposób obsłużyć sytuację, w której nie ma danych do wyświetlenia. Zmodyfikuje komponent `App` tak by:
 
 ## Zadanie
 
-- tymczasowo skopiuj dane z `props.data` do `this.state.data` - w której metodzie cyklu życia to zrobić?
-- dodaj nowy obiekt opisujący wiadomość do `this.state.data` i wyświetl listę nowych wiadomości
+- jeżeli nie ma informacji o danych (`undefined`) wyświetlał komunikat "Trwa pobieranie danych" i nie wyświetlał formularza
+- jeżeli nie ma danych (`[]`) wyświetlał komunikat "Brak danych" oraz formularz nowej wiadomości
