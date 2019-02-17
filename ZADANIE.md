@@ -1,4 +1,4 @@
-# #5 Używanie JS w komponentach
+# #6 Używanie JS w komponentach
 
 ## Zadanie
 
