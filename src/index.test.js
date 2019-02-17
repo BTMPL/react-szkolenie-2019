@@ -17,7 +17,9 @@ test("Message renderuje dane przekazane jako props", () => {
       .padStart(2, "0")}`;
 
   const { getByText } = render(
-    <Message userName={userName} time={time} message={message} />
+    <Message userName={userName} time={time} message={message}>
+      {message}
+    </Message>
   );
   expect(getByText(format(time), { exact: false }));
   expect(getByText(userName, { exact: false }));
