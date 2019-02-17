@@ -1,23 +1,14 @@
-# #5 Renderowanie struktury komponentów
+# #5 Używanie JS w komponentach
 
 ## Zadanie
 
-- utwórz komponent `Message` (zapisz go jako nazwany eksport w pliku `src/Message.js`)
+- zapisz imię w zmiennej lokalnej w komponencie `Message` i wyświetl zamiast zapisanego na sztywno
+- w elemencie `<time>` wyświetl bieżącą godzinę i minutę (w formacie `HH:MM`)
 
-  - komponent ten powinien wygenerować następującą strukturę (na razie zapisz ją na sztywno!):
+## Podpowiedź
 
-  ```
-  <div>
-      <span>Twoje Imię</span>
-      <time>12:00</time>
-      <p>
-          To jest przykładowa wiadomość :)
-      </p>
-  </div>
-  ```
-
-- wyświetl komponent `Message` w komponencie `App`
+Nie używaj bibliotek do generowania daty. Możesz użyć `getHours()` i `getMinutes()` z obiektu `Date`.
 
 ## Bonus
 
-Wyświetl więcej niż jeden komponent `Message` w `App`
+Nie używaj zmiennych do wygenerowania daty - zrób to bezpośrednio w JSX!
