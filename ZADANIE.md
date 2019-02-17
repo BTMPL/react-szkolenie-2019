@@ -1,31 +1,13 @@
-# #9 Renderowanie list komponentów
+# #10 Reagowanie na zdarzenia
 
-Do tej pory dane w komponencie `App` były zapisane na sztywno i renderował on w komponenty `Message` również w oparciu o zapisane na sztywno dane.
-
-Dodajmy do pliku `src/index.js` tablicę danych:
-
-```js
-const data = [
-  {
-    userName: "BTM",
-    time: new Date(),
-    message: "Witaj na szkoleniach z React!"
-  },
-  {
-    userName: "Gość",
-    time: new Date(),
-    message: "Hej!"
-  }
-];
-```
-
-(oczywiście możesz dodać więcej i własne dane).
+Nasza aplikacja powinna być interaktywna i pozwalać na pobieranie danych od użytkownika. Dodajmy do niej pole tekstowe obsługujące zdarzenie "change".
 
 ## Zadanie
 
-- przekaż tablicę obiektów jako prop `data` do komponentu `App`
-- wyświetl wszystkie dane przy użyciu komponentu `Message`
+- utwórz nowy komponent `MessageForm` i zapisz go jako `src/MessageForm`
+- komponent powinien renderować pole formularz typu "text"
+- w zdarzeniu zmiany wyświetlaj w konsoli (`console.log`) wartość, którą w nie wpisano
 
-## Bonus
+## Podpowiedź
 
-Zdefiniuj `propTypes` dla komponentu `App`. Jak można uniknąć powtarzania tych samych danych w `App` i `Message`?
+Dane wpisane w polu znajdziesz w `event.target.value`.

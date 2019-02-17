@@ -1,23 +1,16 @@
 import React from "react";
-import { render } from "react-testing-library";
-import { App } from "./App";
+import { render, fireEvent } from "react-testing-library";
 
-const data = [
-  {
-    userName: "BTM",
-    time: new Date(),
-    message: "Witaj na szkoleniach z React!"
-  },
-  {
-    userName: "Gość",
-    time: new Date(),
-    message: "Hej!"
-  }
-];
+test("Wpisanie tekstu w pole tekstowe powoduje jego wyświetlenie", () => {
+  jest.spyOn(console, "log");
+  const MessageForm = require("./MessageForm").MessageForm;
+  const { container } = render(<MessageForm />);
 
-test("App oprawnie renderuje wszystkie przekazane dane", () => {
-  const { getByText } = render(<App data={data} />);
-  data.forEach(obj => {
-    getByText(obj.message);
+  fireEvent.change(container.querySelector("input"), {
+    target: {
+      value: "test"
+    }
   });
+
+  expect(console.log).toHaveBeenCalledWith("test");
 });
