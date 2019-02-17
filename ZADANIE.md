@@ -1,13 +1,15 @@
-# #12 Komponenty klasowe
+# #13 Formularze kontrolowane
 
-Komponenty klasowe stają się mniej popularne wraz z wprowadzeniem React Hooks w wersji 16.8.0 - tym nie mniej, powinniśmy znać metodę ich działania. Nie tylko pozwoli nam ona pracować z nieco starszym kodem, ale pozwoli nam lepiej zrozumieć cykl życia komponentu.
+Stan komponentu pozwala nam na przechowywanie i operowanie na danych nie związanych z DOM.
 
 ## Zadanie
 
-- zmień komponent `MessageForm` na komponent klasowy
-- w komponentach klasowych NIE MOŻEMY używać React Hooks (np. `React.useHook`)
+- zmieńmy nasz formularz niekontrolowany na kontrolowany
+- zadeklaruj w stanie komponentu wartość `value`
+- po zmianie danych z formularza zaktualizuj `value` na wartość pobraną z formularza
+- ignoruj próby wysłania formularza do czasu aż wpisana w niego wartość nie będzie pusta
+- nie używaj referencji
 
-## Podpowiedź
+## Bonus
 
-- aby utworzyć referencję, użyj `ref = React.createRef()` na zewnątrz metody `render` (ale wciąż w klasie!),
-- do `ref` następnie odwołuj się poprzez `this.ref`
+Wyczyść formularz po wyświetleniu `alert`
