@@ -1,4 +1,4 @@
-# #13 Formularze kontrolowane
+# #13 Stan komponentu i formularze kontrolowane
 
 Stan komponentu pozwala nam na przechowywanie i operowanie na danych nie związanych z DOM.
 
