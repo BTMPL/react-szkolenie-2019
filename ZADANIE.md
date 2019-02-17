@@ -1,4 +1,4 @@
-# #15 Obsługa braku danych
+# #16 Obsługa braku danych
 
 Nasz komponent powinien wiedzieć w jaki sposób obsłużyć sytuację, w której nie ma danych do wyświetlenia. Zmodyfikuje komponent `App` tak by:
 
