@@ -1,4 +1,4 @@
-# #8 propTypes i defaulltProps
+# #8 propTypes i defaultProps
 
 Używanie propTypes stanowi rodzaj dokumentacji komponentu, przydatne jeżeli nie używamy np. TypeScript ale także kiedy chcemy udokumentować nasz komponent np. w react-styleguidist
 
