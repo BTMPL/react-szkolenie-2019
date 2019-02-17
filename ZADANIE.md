@@ -12,7 +12,11 @@
 - użyj metody `React.createElement` aby wyrenderować następujący kod HTML:
 
   ```
-  <div>Witaj na <b>Warsztatach z React!</b></div>
+  <div>Witaj na <b>Warsztatach z React</b>!</div>
   ```
 
 - zwróć uwagę, że nie cały tekst jest pogrubiony!
+
+## Bonus
+
+Gdzie podziała się spacja między "Witaj na" i "warsztatach z React"? Jak można ją dodać?
