@@ -1,13 +1,17 @@
-# #10 Reagowanie na zdarzenia
+# #11 Dostęp do elementów DOM przy użyciu ref
 
-Nasza aplikacja powinna być interaktywna i pozwalać na pobieranie danych od użytkownika. Dodajmy do niej pole tekstowe obsługujące zdarzenie "change".
+Czasem potrzebujemy uzyskać dostęp do elementów DOM - np. odczytać dane z formularza nie koniecznie na skutek interakcji.
 
 ## Zadanie
 
-- utwórz nowy komponent `MessageForm` i zapisz go jako `src/MessageForm`
-- komponent powinien renderować pole formularz typu "text"
-- w zdarzeniu zmiany wyświetlaj w konsoli (`console.log`) wartość, którą w nie wpisano
+- zmień element `MessageForm` tak, by był formularzem
+- w reakcji na próbę wysłania formularza przy użyciu klawisza Enter pobierz i wyświetl w `alert` dane z pola formularza
 
 ## Podpowiedź
 
-Dane wpisane w polu znajdziesz w `event.target.value`.
+- reakcję na próbę wysłania formularza obsłuż w jego metodzie `onSubmit`
+  - pamiętaj, żeby powstrzymać faktyczne przesłanie formularza
+
+## Bonus
+
+Wyczyść pole formularza po wyświetleniu komunikatu w `alert`

@@ -1,16 +1,17 @@
 import React from "react";
 import { render, fireEvent } from "react-testing-library";
 
-test("Wpisanie tekstu w pole tekstowe powoduje jego wyświetlenie", () => {
-  jest.spyOn(console, "log");
+test("Próba wysłania formularza wyświetla wpisane w niego dane", () => {
+  jest.spyOn(global, "alert").mockImplementation(() => {});
   const MessageForm = require("./MessageForm").MessageForm;
   const { container } = render(<MessageForm />);
 
   fireEvent.change(container.querySelector("input"), {
     target: {
-      value: "test"
+      value: "test alert"
     }
   });
+  fireEvent.submit(container.querySelector("form"));
 
-  expect(console.log).toHaveBeenCalledWith("test");
+  expect(global.alert).toHaveBeenCalledWith("test alert");
 });
