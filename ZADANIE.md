@@ -1,13 +1,21 @@
-# #7 Przekazywanie danych do komponentu
+# #8 propTypes i defaulltProps
+
+Używanie propTypes stanowi rodzaj dokumentacji komponentu, przydatne jeżeli nie używamy np. TypeScript ale także kiedy chcemy udokumentować nasz komponent np. w react-styleguidist
+
+Używanie defaultProps może uchronić nas przed problemami z wyświetlaniem "undefined" lub próbami dostępu do metod na `undefined`.
 
 ## Zadanie
 
-Przechowywanie danych wewnątrz komponentu jest mało przydatne - w większości wypadków nasz komponenty będą zajmowały się renderowaniem danych, które otrzymają.
+Dodaj odpowiednie propTypes dla komponentu `Message`
 
-- przerób komponent `Message` tak, by nazwa użytkownika była przekazywana do niego jako prop `userName`, data jako `time` a wiadomość jako `message`
-- props `time` powinien być liczbą (unix timestamp), którą komponent następnie przekonwertuje do odpowiedniego formatu
-- niech `App` wyrenderuje komponent `Message` i przekaże do niego odpowiednie wartości
+- sprawdź dostępne typy na [na stronie projektu](https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes) - które z nich są właściwe?
 
-## Bonus
+- dodaj defaultProps do komponentu `Message`:
 
-- użyj zapisu destrukturyzacji, aby uniknąć używania obiektu `props` w komponencie `Message`
+  - userName - domyślnie "Anonim"
+
+- usuń userName z renderowania `Message` i sprawdź, czy działa poprawnie
+
+## Podpowiedź
+
+Nie musisz instalować modułu `PropTypes`, jest on domyślnie instalowany wraz z modułem `react`.

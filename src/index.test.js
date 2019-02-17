@@ -2,26 +2,10 @@ import React from "react";
 import { render } from "react-testing-library";
 import { Message } from "./Message.js";
 
-test("Message renderuje dane przekazane jako props", () => {
-  const time = new Date().getTime();
-  const message = "wiadomość testowa";
-  const userName = "BTM";
+test("Message poprawnie definuje propTypes", () => {
+  expect(Message.propTypes).not.toBeUndefined();
+});
 
-  const format = timestamp =>
-    `${new Date(timestamp)
-      .getHours()
-      .toString()
-      .padStart(2, "0")}:${new Date(timestamp)
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}`;
-
-  const { getByText } = render(
-    <Message userName={userName} time={time} message={message}>
-      {message}
-    </Message>
-  );
-  expect(getByText(format(time), { exact: false }));
-  expect(getByText(userName, { exact: false }));
-  expect(getByText(message, { exact: false }));
+test("Message poprawnie definuje defaultProps", () => {
+  expect(Message.defaultProps.userName).toMatch("Anonim");
 });
