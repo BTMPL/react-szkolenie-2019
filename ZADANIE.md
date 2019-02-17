@@ -1,22 +1,13 @@
-# #2 Wprowadzenie do ReactDOM.render
+# #3 Komponenty
 
 ## Zadanie
 
-- użyj metody `React.createElement` aby wyrenderować element `div` z tekstem
+- utwórz komponent `App` i wyrenderuj w nim strukturę z poprzedniego zadania:
 
-  - `React.createElement` przyjmuje 3+ parametry:
-    - nazwę elementu do wyrenderowania,
-    - obiekt "props" ( na razie przekazujemy pusty obiekt - {} )
-    - kolejne parametry stanowią kolejne dzieci elementu
+```
+    <p>
+      Witaj na <b>Warsztatach React</b>!
+    </p>
+```
 
-- użyj metody `React.createElement` aby wyrenderować następujący kod HTML:
-
-  ```
-  <div>Witaj na <b>Warsztatach z React</b>!</div>
-  ```
-
-- zwróć uwagę, że nie cały tekst jest pogrubiony!
-
-## Bonus
-
-Gdzie podziała się spacja między "Witaj na" i "warsztatach z React"? Jak można ją dodać?
+- wyeksportuj komponent jako eksport nazwany `App`
