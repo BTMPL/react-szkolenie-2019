@@ -1,11 +1,18 @@
-# #1 Wprowadzenie do tworzenia aplikacji
+# #2 Wprowadzenie do ReactDOM.render
 
 ## Zadanie
 
-- utwórz punkt startowy dla aplikacji jako `src/index.js`
-- uruchom aplikację komendą `yarn start` lub `npm start`
-- używając składni `import ? from ?` dodaj do projektu:
+- użyj metody `React.createElement` aby wyrenderować element `div` z tekstem
 
-  - metodę `render` z pakietu `react-dom`
+  - `React.createElement` przyjmuje 3+ parametry:
+    - nazwę elementu do wyrenderowania,
+    - obiekt "props" ( na razie przekazujemy pusty obiekt - {} )
+    - kolejne parametry stanowią kolejne dzieci elementu
 
-- wyświetl napis "Witaj Świecie" na ekranie
+- użyj metody `React.createElement` aby wyrenderować następujący kod HTML:
+
+  ```
+  <div>Witaj na <b>Warsztatach z React!</b></div>
+  ```
+
+- zwróć uwagę, że nie cały tekst jest pogrubiony!
