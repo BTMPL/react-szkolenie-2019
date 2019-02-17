@@ -1,17 +1,9 @@
-# #3 Komponenty
+# #4 Strukturowanie aplikacji
 
 ## Zadanie
 
-- utwórz komponent `App` w pliku `src/index.js` i wyrenderuj w nim strukturę z poprzedniego zadania:
+Z biegiem czasu nasza aplikacja będzie co raz bardziej rozbudowana i kolejne komponenty w jednym pliku będą ciężkie do aktualizacji.
 
-```
-    <p>
-      Witaj na <b>Warsztatach React</b>!
-    </p>
-```
-
-- wyeksportuj komponent jako eksport nazwany `App`
-
-## Debug
-
-Jeżeli konsola z testami generuje błędy dot. "Cannot read property 'hasOwnProperty'..." upewnij się, że katalog `__mocks__` jest aktualnie pusty i zrestartuj test-runnera.
+- utwórz plik `src/App.js`
+- przenieś do niego komponent `App` i eyksportuj go jako nazwany eksport
+- zaimportuj komponent w `index.js` i wyświetl tak jak poprzednio
