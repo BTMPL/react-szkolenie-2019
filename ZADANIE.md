@@ -1,15 +1,9 @@
 # #7 Przekazywanie danych do komponentu
 
-## Wprowadzenie
-
-- dostęp do danych globalnych nie jest bezpieczny ani wydajny
-
 ## Zadanie
 
-- przekaż dane (`userName`, `userAvatar`) do komponentu `Tweet` jako parametry
-- komponent `Tweet` powinien przekazać je dalej do `UserDetails`
+Przechowywanie danych wewnątrz komponentu jest mało przydatne - w większości wypadków nasz komponenty będą zajmowały się renderowaniem danych, które otrzymają.
 
-  - pamiętaj, że do "przełączenia się w tryb JS" używamy znaczników {}
-  - parametry będą dostępne jako pierwszy parametr (Obiekt) przekazany do komponentu
-
-- przekaż treść tweetu jako parametr (`text`) do komponentu `Tweet`
+- przerób komponent `Message` tak, by nazwa użytkownika była przekazywana do niego jako prop `userName`, data jako `time` a wiadomość jako `message`
+- props `time` powinien być liczbą (unix timestamp), którą komponent następnie przekonwertuje do odpowiedniego formatu
+- niech `App` wyrenderuje komponent `Message` i przekaże do niego odpowiednie wartości
