@@ -1,9 +1,23 @@
-# #4 Strukturowanie aplikacji
+# #5 Renderowanie struktury komponentów
 
 ## Zadanie
 
-Z biegiem czasu nasza aplikacja będzie co raz bardziej rozbudowana i kolejne komponenty w jednym pliku będą ciężkie do aktualizacji.
+- utwórz komponent `Message` (zapisz go jako nazwany eksport w pliku `src/Message.js`)
 
-- utwórz plik `src/App.js`
-- przenieś do niego komponent `App` i eyksportuj go jako nazwany eksport
-- zaimportuj komponent w `index.js` i wyświetl tak jak poprzednio
+  - komponent ten powinien wygenerować następującą strukturę (na razie zapisz ją na sztywno!):
+
+  ```
+  <div>
+      <span>Twoje Imię</span>
+      <time>12:00</time>
+      <p>
+          To jest przykładowa wiadomość :)
+      </p>
+  </div>
+  ```
+
+- wyświetl komponent `Message` w komponencie `App`
+
+## Bonus
+
+Wyświetl więcej niż jeden komponent `Message` w `App`

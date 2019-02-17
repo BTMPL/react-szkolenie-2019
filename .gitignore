@@ -25,4 +25,5 @@ yarn-error.log*
 # workshop artifact
 /src/index.js
 /src/App.js
+/src/Message.js
 notes.md
