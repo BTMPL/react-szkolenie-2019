@@ -1,15 +1,11 @@
-# #13 Formularze kontrolowane
+# #14 Przekazywanie danych do rodzica
 
-Stan komponentu pozwala nam na przechowywanie i operowanie na danych nie związanych z DOM.
+Wiemy już jak przekazać dane z rodzica do dziecka - przekazywanie ich w drugą stronę jest nieco bardziej skomplikowane.
 
 ## Zadanie
 
-- zmieńmy nasz formularz niekontrolowany na kontrolowany
-- zadeklaruj w stanie komponentu wartość `value`
-- po zmianie danych z formularza zaktualizuj `value` na wartość pobraną z formularza
-- ignoruj próby wysłania formularza do czasu aż wpisana w niego wartość nie będzie pusta
-- nie używaj referencji
+- zmodyfikuj komponent `App` tak, aby to on wywoływał `alert` z wartością wpisaną do `MessageForm`
 
 ## Bonus
 
-Wyczyść formularz po wyświetleniu `alert`
+Pamiętaj o aktualizowaniu `propTypes` :)
