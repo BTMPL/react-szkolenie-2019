@@ -27,4 +27,5 @@ yarn-error.log*
 /src/App.js
 /src/Message.js
 /src/MessageForm.js
+/src/style.css
 notes.md
