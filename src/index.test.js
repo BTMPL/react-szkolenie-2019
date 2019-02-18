@@ -1,18 +1,28 @@
 import React from "react";
-import { render, fireEvent } from "react-testing-library";
+import { render, wait, fireEvent } from "react-testing-library";
 
-test("Dla braku listy, ukrywa formularz i pokazuje stosowny komunikat", () => {
+test("komponent App pobiera listę danych przy montowaniu i wyświetla odpowiedni tekst", async () => {
+  jest.mock("./api");
+  const api = require("./api").api;
+
   const App = require("./App").App;
-  const { getByText, container } = render(<App data={undefined} />);
+  const { getByText } = render(<App />);
 
-  getByText(/Trwa pobieranie danych/);
-  expect(container.querySelectorAll("input").length).toBe(0);
+  await wait(() => getByText("Test string"));
+  expect(api.get).toHaveBeenCalled();
 });
 
-test("Dla pustej listy, wyświetla formularz i stosowny komunikat", () => {
-  const App = require("./App").App;
-  const { getByText, container } = render(<App data={[]} />);
+test("Próba wysłania danych wywołuje api.create", async () => {
+  jest.mock("./api");
+  const api = require("./api").api;
 
-  getByText(/Brak danych/);
-  expect(container.querySelectorAll("input").length).toBe(1);
+  const App = require("./App").App;
+  const { container } = render(<App />);
+  fireEvent.change(container.querySelector("input"), {
+    target: {
+      value: "test post"
+    }
+  });
+
+  expect(api.create).toHaveBeenCalled();
 });
