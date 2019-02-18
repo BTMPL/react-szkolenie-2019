@@ -17,12 +17,15 @@ test("Próba wysłania danych wywołuje api.create", async () => {
   const api = require("./api").api;
 
   const App = require("./App").App;
-  const { container } = render(<App />);
+  const { container, getByText } = render(<App />);
+  await wait(() => getByText("Test string"));
+
   fireEvent.change(container.querySelector("input"), {
     target: {
       value: "test post"
     }
   });
+  fireEvent.submit(container.querySelector("form"));
 
   expect(api.create).toHaveBeenCalled();
 });
