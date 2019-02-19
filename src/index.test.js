@@ -5,12 +5,12 @@ import { App } from "./App";
 const data = [
   {
     userName: "BTM",
-    time: new Date(),
+    time: new Date().getTime(),
     message: "Witaj na szkoleniach z React!"
   },
   {
     userName: "Gość",
-    time: new Date(),
+    time: new Date().getTime(),
     message: "Hej!"
   }
 ];
