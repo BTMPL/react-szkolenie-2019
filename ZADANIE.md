@@ -10,6 +10,10 @@ Stan komponentu pozwala nam na przechowywanie i operowanie na danych nie związa
 - ignoruj próby wysłania formularza do czasu aż wpisana w niego wartość nie będzie pusta
 - nie używaj referencji
 
+## Podpowiedź
+
+Do aktualizacji stanu komponentu użyj `this.setState()`
+
 ## Bonus
 
 Wyczyść formularz po wyświetleniu `alert`
