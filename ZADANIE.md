@@ -1,35 +1,11 @@
-# #18 Komunikacja z API
+# #19 Dodatkowa logika
 
-Jedno-osobowy chat jest mało przydatny. Dodajmy do niego wsparcie dla wielu użytkowników.
+Mamy już dostateczną wiedzę, aby udoskonalić naszą aplikację. Zmodyfikujmy ją zatem wg. poniższych wytycznych.
 
-W projekcie pojawił się nowy plik, `src/api.js`, eksportujący nazwany obiekt `api` z 2 metodami:
+**UWAGA**: Wszystkie treści umieszczone w cudzysłowie zamieść proszę dokładnie tak jak podano - w innym wypadku testy nie będą działać!
 
-- `api.get` - zwraca Promise, resolvujący się na obiekt odpowiedzi
-- `api.create(string userName, string message)` - pozwala na wysłanie wiadomości do serwera, zwraca Promise
-
-Kształt odpowiedzi z serwera to:
-
-```js
-{
-  items: [
-    {
-      id: string,
-      date: string,
-      text: string,
-      user: {
-        userName: string
-      }
-    }
-  ],
-  count: number
-}
-```
-
-## Zadanie
-
-- pobierz listę danych po załadowaniu aplikacji i wyświetl je na ekranie
-- wyślij wiadomość użytkownika i odśwież listę wiadomości po tym, jak zarejestruje ją serwer
-
-## Bonus
-
-Dodaj cykliczne pobieranie nowych wiadomości co 1 sekundę. Jak uniknąć dodawania ponownie już wyświetlonych wiadomości?
+- Po uruchomieniu, aplikacja powinna pokazać pole tekstowe na podanie imienia użytkownika + przycisk z napisem "Zaloguj"
+- Jeżeli użytkownik spróbuje przejść dalej bez podania imienia, lub wpisze pustą wartość (same spacje), aplikacja pokaże błąd "Podaj imię"
+- Po poprawnym podaniu imienia, aplikacja nawiąże połączenie z API (do czasu podania poprawnego imienia nie nawiązuj połączenia), ukryje (przestanie renderować) formularz logowania i pokaże listę wiadomości pobranych z serwera
+- Wysłanie wiadomości czyści formularz wpisywania treści
+- Wysłanie wiadomości wysyła do serwera informacje z ustalonym wcześniej imieniem
