@@ -7,6 +7,7 @@ export const MessageForm = () => {
       onSubmit={e => {
         e.preventDefault();
         alert(ref.current.value);
+        ref.current.value = "";
       }}
     >
       <input type="text" ref={ref} />
