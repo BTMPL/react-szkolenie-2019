@@ -1,7 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export class MessageForm extends React.Component {
   state = { value: "" };
+
+  static propTypes = {
+    onMessage: PropTypes.func
+  };
 
   render() {
     return (
@@ -11,6 +16,9 @@ export class MessageForm extends React.Component {
           if (this.state.value === "") return;
 
           this.props.onMessage && this.props.onMessage(this.state.value);
+          this.setState({
+            value: ""
+          });
         }}
       >
         <input
