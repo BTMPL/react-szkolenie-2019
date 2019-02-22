@@ -9,6 +9,7 @@ export class MessageForm extends React.Component {
         onSubmit={e => {
           e.preventDefault();
           alert(this.ref.current.value);
+          ref.current.value = "";
         }}
       >
         <input type="text" ref={this.ref} />
