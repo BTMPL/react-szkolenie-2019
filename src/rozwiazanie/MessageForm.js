@@ -11,6 +11,9 @@ export class MessageForm extends React.Component {
           if (this.state.value === "") return;
 
           alert(this.state.value);
+          this.setState({
+            value: ""
+          });
         }}
       >
         <input
