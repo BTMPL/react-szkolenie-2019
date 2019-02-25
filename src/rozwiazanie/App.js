@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Message } from "./Message";
-import { MessageForm } from "./MessageForm";
 
 import styled from "styled-components";
 
