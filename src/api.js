@@ -1,4 +1,4 @@
-const url = "http://147.135.192.225:8080";
+const url = "http://147.135.192.225:80";
 export const api = {
   isMocked: false,
   create: (userName, text) => {
@@ -17,6 +17,6 @@ export const api = {
   },
 
   get: () => {
-    return fetch("http://147.135.192.225:8080/").then(d => d.json());
+    return fetch("http://147.135.192.225:80/").then(d => d.json());
   }
 };

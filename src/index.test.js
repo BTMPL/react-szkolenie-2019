@@ -35,7 +35,7 @@ test("Po poprawnym zalogowaniu, aplikacja renderuje pobrane z API dane", async (
   const App = require("./App").App;
   const { getByText, container } = render(<App />);
 
-  fireEvent.change(container.querySelector("input"), {
+  fireEvent.change(container.parentNode.querySelector("input"), {
     target: {
       value: "Bartek"
     }
@@ -52,7 +52,7 @@ test("Próba wysłania danych wywołuje api.create z odpowiednim imieniem", asyn
   const App = require("./App").App;
   const { container, getByText } = render(<App />);
 
-  fireEvent.change(container.querySelector("input"), {
+  fireEvent.change(container.parentNode.querySelector("input"), {
     target: {
       value: "Bartek"
     }
@@ -61,12 +61,12 @@ test("Próba wysłania danych wywołuje api.create z odpowiednim imieniem", asyn
 
   await wait(() => getByText(/Test string/));
 
-  fireEvent.change(container.querySelector("input"), {
+  fireEvent.change(container.parentNode.querySelector("input"), {
     target: {
       value: "test post"
     }
   });
-  fireEvent.submit(container.querySelector("form"));
+  fireEvent.submit(container.parentNode.querySelector("form"));
 
   expect(api.create).toHaveBeenCalled();
   expect(api.create.mock.calls[0][0]).toMatch("Bartek");
