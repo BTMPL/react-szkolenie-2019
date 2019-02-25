@@ -5,6 +5,8 @@ import { MessageForm } from "./MessageForm";
 
 import styled from "styled-components";
 
+import { api } from "./api";
+
 const Layout = styled.div`
   height: 97vh;
   display: flex;
@@ -22,9 +24,31 @@ const MessageList = styled.div`
   flex: 1;
 `;
 
+const formatMessageForUI = message => ({
+  message: message.text,
+  time: new Date(message.date).getTime(),
+  userName: message.user.userName
+});
+
 export class App extends React.Component {
   state = {
-    data: this.props.data
+    data: undefined
+  };
+
+  componentDidMount() {
+    this.interval = setInterval(this.pool, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  pool = () => {
+    api.get().then(data =>
+      this.setState({
+        data: data.items.map(formatMessageForUI)
+      })
+    );
   };
 
   render() {
@@ -52,9 +76,10 @@ export class App extends React.Component {
         )}
         <MessageForm
           onMessage={str => {
+            api.create("Bartek", str);
             this.setState(state => ({
               data: state.data.concat({
-                userName: "BTM",
+                userName: "Bartek",
                 message: str,
                 time: new Date().getTime()
               })
