@@ -1,16 +1,18 @@
 import React from "react";
 import { render, wait, fireEvent, cleanup } from "react-testing-library";
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  jest.clearAllMocks();
+});
 
 describe("provider withChat", () => {
-  test("przyjmuje komponent i renderuje go z odpowiednimi danymi", async () => {
+  test("do czasu pobrania danych zwraca stosowny komunikat", async () => {
     jest.mock("./api");
-    const api = require("./api").api;
     const withChat = require("./providers/chat").withChat;
 
-    const spy = jest.fn(() => {
-      return null;
+    const spy = jest.fn(({ data, isLoading }) => {
+      return data ? data.map(i => i.message) : null;
     });
 
     const Component = withChat(spy);
@@ -19,9 +21,32 @@ describe("provider withChat", () => {
     expect(spy).toHaveBeenCalledWith(
       expect.objectContaining({
         create: expect.any(Function),
-        data: undefined
+        data: undefined,
+        isLoading: true
       }),
       // Komponent jest renderowany wraz z obiektem props, ignorujemy go
+      expect.any(Object)
+    );
+  });
+
+  test("przyjmuje komponent i renderuje go z odpowiednimi danymi", async () => {
+    jest.mock("./api");
+    const withChat = require("./providers/chat").withChat;
+
+    const spy = jest.fn(({ data }) => {
+      return data ? data.map(i => i.message) : null;
+    });
+
+    const Component = withChat(spy);
+    const { getByText } = render(<Component />);
+
+    await wait(() => getByText("Test string"));
+
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        create: expect.any(Function),
+        data: expect.any(Array)
+      }),
       expect.any(Object)
     );
   });

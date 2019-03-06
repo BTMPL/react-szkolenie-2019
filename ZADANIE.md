@@ -10,6 +10,9 @@ Usuńmy logikę pobierania danych z komponentu prezentacyjnego.
   - pobierać dane chata po zamontowaniu
   - po odmontowaniu usuwać mechanizm pobierania danych cyklicznie
   - posiadać mechanizm publikowania danych
-  - renderować przekazany komponent przekazując do niego `data` oraz `create`
+  - do "owijanego" komponentu przekazuje:
+    - `isLoading` - Boolean (owijany komponent wciąż decyduje, czy pokazać informacje o pobieraniu danych)
+    - `data` - Array
+    - `create` - Function
 
 - Zmodyfikuj komponent ekranu chatu tak, by używał on `withChat` w celu pobrania i wysyłania danych
