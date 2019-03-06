@@ -1,17 +1,60 @@
-import { renderHook, cleanup } from "react-hooks-testing-library";
+import React from "react";
+import { render, cleanup, fireEvent } from "react-testing-library";
+
+import {
+  Translation,
+  TranslationProvider,
+  T,
+  LanguageSwitch
+} from "./providers/translation";
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
 });
 
-test("hook useChat zwraca poprawne dane", () => {
-  jest.mock("./api");
-  const useChat = require("./providers/chat").useChat;
+test("komponent T renderuje przekazaną labelkę, jeżeli nie znalazł tłumaczenia", () => {
+  const key = Math.random().toString();
+  const { container } = render(<T as={"p"} label={`${key}`} />);
 
-  const { result } = renderHook(() => useChat());
+  expect(container.querySelector("p").innerHTML).toBe(key);
+});
 
-  expect(result.current.data).toBeUndefined();
-  expect(typeof result.current.create).toBe(typeof Function);
-  expect(result.current.isLoading).toBe(true);
+test("komponent TranslationProvider udostępnia tłumaczenia", () => {
+  render(
+    <TranslationProvider>
+      <Translation.Consumer>
+        {props => {
+          expect(props).toEqual(
+            expect.objectContaining({
+              labels: expect.any(Object)
+            })
+          );
+        }}
+      </Translation.Consumer>
+    </TranslationProvider>
+  );
+});
+
+test("komponent LanguageSwitch pozwalający na zmianę języka", () => {
+  const spy = jest.fn(() => null);
+  const { getByText } = render(
+    <TranslationProvider>
+      <Translation.Consumer>{spy}</Translation.Consumer>
+      <LanguageSwitch to={"en"}>english</LanguageSwitch>
+    </TranslationProvider>
+  );
+
+  expect(spy).toHaveBeenCalledWith(
+    expect.objectContaining({
+      language: "pl"
+    })
+  );
+
+  fireEvent.click(getByText("english"));
+
+  expect(spy).toHaveBeenCalledWith(
+    expect.objectContaining({
+      language: "en"
+    })
+  );
 });
