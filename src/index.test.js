@@ -1,73 +1,73 @@
 import React from "react";
-import { render, wait, fireEvent } from "react-testing-library";
+import { render, cleanup, fireEvent } from "react-testing-library";
 
-test("Aplikacja nie próbuje połączyć się z api do czasu podania imienia", async () => {
-  jest.mock("./api");
-  const api = require("./api").api;
+import { MessageForm } from "./MessageForm";
+import { executionAsyncId } from "async_hooks";
 
-  const App = require("./App").App;
-  render(<App />);
+afterEach(cleanup);
 
-  expect(api.get).not.toHaveBeenCalled();
-});
-
-test("Aplikacja renderuje formularz logowania i nie pozwala na kontynuowanie jeżeli jest pusty", async () => {
-  jest.mock("./api");
-
-  const App = require("./App").App;
-  const { getByText, container } = render(<App />);
-
-  fireEvent.click(getByText(/Zaloguj/));
-  getByText(/Podaj imię/);
-
-  fireEvent.change(container.querySelector("input"), {
-    target: {
-      value: "    "
-    }
+describe("Komponent MessageForm akceptuje render prop render button", () => {
+  test("i renderuje guzik jeżeli jest przekazany", () => {
+    const { getByText } = render(
+      <MessageForm
+        onMessage={() => {}}
+        renderButton={() => <button>test render prop</button>}
+      />
+    );
+    expect(getByText("test render prop"));
   });
-  fireEvent.click(getByText(/Zaloguj/));
-  getByText(/Podaj imię/);
-});
 
-test("Po poprawnym zalogowaniu, aplikacja renderuje pobrane z API dane", async () => {
-  jest.mock("./api");
-
-  const App = require("./App").App;
-  const { getByText, container } = render(<App />);
-
-  fireEvent.change(container.parentNode.querySelector("input"), {
-    target: {
-      value: "Bartek"
-    }
+  test("guzik jest zablokowany, jeżeli nie ma treści", () => {
+    const spy = jest.fn(() => {
+      return <button>test render prop</button>;
+    });
+    render(<MessageForm onMessage={() => {}} renderButton={spy} />);
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({ disabled: true })
+    );
   });
-  fireEvent.click(getByText(/Zaloguj/));
 
-  await wait(() => getByText(/Test string/));
-});
+  test("po wpisaniu treści jest odblokowywany", () => {
+    const spy = jest.fn(props => {
+      return <button {...props}>test disable props</button>;
+    });
+    const { container } = render(
+      <MessageForm onMessage={() => {}} renderButton={spy} />
+    );
 
-test("Próba wysłania danych wywołuje api.create z odpowiednim imieniem", async () => {
-  jest.mock("./api");
-  const api = require("./api").api;
+    fireEvent.change(container.querySelector("input"), {
+      target: {
+        value: "username"
+      }
+    });
 
-  const App = require("./App").App;
-  const { container, getByText } = render(<App />);
-
-  fireEvent.change(container.parentNode.querySelector("input"), {
-    target: {
-      value: "Bartek"
-    }
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenLastCalledWith(
+      expect.objectContaining({ disabled: false })
+    );
   });
-  fireEvent.click(getByText(/Zaloguj/));
 
-  await wait(() => getByText(/Test string/));
+  test("po kliknięciu wysyła formularz", () => {
+    const spy = jest.fn(props => {
+      return <button {...props}>test props</button>;
+    });
 
-  fireEvent.change(container.parentNode.querySelector("input"), {
-    target: {
-      value: "test post"
-    }
+    const messageSpy = jest.fn();
+    const { container, getByText } = render(
+      <MessageForm onMessage={messageSpy} renderButton={spy} />
+    );
+
+    fireEvent.click(getByText("test props"));
+    expect(messageSpy).toHaveBeenCalledTimes(0);
+
+    fireEvent.change(container.querySelector("input"), {
+      target: {
+        value: "username"
+      }
+    });
+
+    fireEvent.click(getByText("test props"));
+    expect(spy).toHaveBeenCalledTimes(3);
+    expect(messageSpy).toHaveBeenCalledTimes(1);
   });
-  fireEvent.submit(container.parentNode.querySelector("form"));
-
-  expect(api.create).toHaveBeenCalled();
-  expect(api.create.mock.calls[0][0]).toMatch("Bartek");
 });

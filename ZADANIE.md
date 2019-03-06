@@ -1,17 +1,17 @@
-# #19 Dodatkowa logika
+# #20 Render prop
 
-Mamy już dostateczną wiedzę, aby udoskonalić naszą aplikację. Zmodyfikujmy ją zatem wg. poniższych wytycznych.
+Dodajmy nieco lepszą parametryzację komponentu `MessageForm`
 
 ## Uwaga
 
-Wszystkie treści umieszczone w cudzysłowie zamieść proszę dokładnie tak jak podano - w innym wypadku testy nie będą działać!
-
-Komponent `App` pozostaje naszym pkt. wejściowym - dalsza struktura aplikacji (oddzielne komponenty dla formularza logowania etc.) pozostają Twoją decyzją.
+Testy pokrywają komponent `MessageForm` eksportowany z pliku `./src/MessageForm.js` - jeżeli zmieniłeś strukturę w swoim projekcie, proszę przywróć ją (np. kopiując rozwiązanie z poprzedniego brancha) lub zmień ją też w testach.
 
 ## Zadanie
 
-- Po uruchomieniu, aplikacja powinna pokazać pole tekstowe na podanie imienia użytkownika + przycisk z napisem "Zaloguj"
-- Jeżeli użytkownik spróbuje przejść dalej bez podania imienia, lub wpisze pustą wartość (same spacje), aplikacja pokaże błąd "Podaj imię"
-- Po poprawnym podaniu imienia, aplikacja nawiąże połączenie z API (do czasu podania poprawnego imienia nie nawiązuj połączenia), ukryje (przestanie renderować) formularz logowania i pokaże listę wiadomości pobranych z serwera
-- Wysłanie wiadomości czyści formularz wpisywania treści
-- Wysłanie wiadomości wysyła do serwera informacje z ustalonym wcześniej imieniem
+- Zmodyfikuj komponent `MessageForm` tak, by ofertował on render prop o nazwie `renderButton`
+- Jeżeli nie ma on żadnej wartości, guzik nie powinien być renderowany
+- Przekazana do niego funkcja wywołana jest z obiektem zawierającym pola `disabled` (jeżeli nie wpisano wartości) i `onClick` obsługujący wysyłkę formularza (możesz usunąć te logikę z `onSubmit`)
+
+## Notatki
+
+Przenoszenie tego typu logiki z `<form onSubmit>` do `<button onClick>` nie jest najlepszym rozwiązaniem w praktyce, ale pozwoli nam zobrazować mechanizm render prop.
