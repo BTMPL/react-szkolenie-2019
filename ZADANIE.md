@@ -3,7 +3,7 @@
 ## Zadanie
 
 - Utwórz nowy plik `./providers/translation.js` (zwróć uwagę na małą literę)
-- Wyeksportuj z niego 3 elementy:
+- Wyeksportuj z niego 4 elementy:
 
   - context tłumaczenia jako `Translation`
   - `TranslationProvider` akceptujący prop z językiem (`lang`) domyślnie "pl"
