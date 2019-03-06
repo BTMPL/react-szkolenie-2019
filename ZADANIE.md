@@ -1,16 +1,11 @@
-# #23 useState
-
-React Hooks to nowy sposób tworzenia komponentów w React 16.8 - umożliwia on dodawanie do komponentów opartych o funkcje funkcjonalności do tej pory zarezerwowane dla komponentów klasowych.
+# #23 useEffect
 
 ## Zadanie
 
-- Zmień komponenty `LoginScreen`, `MessageForm` i `App` na komponenty funkcyjne, stan zastępując hookiem `React.useState`
+- Zmień komponent `ChatProvider` na komponent oparty o funkcje
+  - metody lifecycle zastąp wywołaniem `React.useEffect()`
 
 ## Podpowiedź
 
-`React.useState()` (oraz updater!) przyjmuje funkcję jako wartość. W takim wypadku zostanie ona wywołana i jej zwrócona wartość zostanie ustawiona jako stan. Jeżeli chcesz użyć komponent jako początkową wartość użyj następującej notacji:
-
-```js
-// React.useState(Component); // ŹLE!
-React.useState(() => Component); // DOBRZE!
-```
+- `useEffect` jako drugi parametr przyjmuje tablicę której _wartości_ zostaną porównane i jeżeli nie uległy zmianie, efekt nie zostanie wywołany
+- efekt może zwrócić funkcję, która zostanie wywołana w momencie zastępowania efektu nowym lub odmontowywania kompomonentu
