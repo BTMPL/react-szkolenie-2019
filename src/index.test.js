@@ -6,21 +6,26 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe("Aplikacja", () => {
-  test("Po poprawnym zalogowaniu, aplikacja renderuje pobrane z API dane jako Message, po zmianie jako Bubble", async () => {
+describe("ChatProvider", () => {
+  test("renderuje przekazane dziecko z odpowiednimi danymi", () => {
     jest.mock("./api");
-    const mockMessage = jest.fn(props => {
-      return props.message;
-    });
+    const ChatProvider = require("./providers/chat.js").ChatProvider;
+    const spy = jest.fn(() => null);
+    render(<ChatProvider>{spy}</ChatProvider>);
 
-    const mockBubble = jest.fn(props => {
-      return props.message;
-    });
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        isLoading: true,
+        data: undefined,
+        create: expect.any(Function)
+      })
+    );
+  });
+});
 
-    jest.mock("./Message", () => ({
-      Message: mockMessage,
-      Bubble: mockBubble
-    }));
+describe("Aplikacja", () => {
+  test("Po zalogowaniu aplikacja pokazuje nagłówek, po pobraniu danych, nagłówek nie ulega re-renderowaniu", async () => {
+    jest.mock("./api");
 
     const App = require("./App").App;
     const { getByText, container } = render(<App />);
@@ -31,13 +36,10 @@ describe("Aplikacja", () => {
       }
     });
     fireEvent.click(getByText(/Zaloguj/));
+    const h1 = container.querySelector("h1").innerText;
 
     await wait(() => getByText(/Test string/));
 
-    expect(mockMessage).toHaveBeenCalled();
-    expect(mockBubble).not.toHaveBeenCalled();
-
-    fireEvent.click(getByText(/Wyświetl jako bąbelki/));
-    expect(mockBubble).toHaveBeenCalled();
+    expect(container.querySelector("h1").innerText).toBe(h1);
   });
 });

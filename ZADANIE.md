@@ -1,14 +1,13 @@
-# #21 Render props
+# #22 Render props - Function as Child
+
+High order Components są potężnym wzorcem, pozwalającym na abstrakcję powtarzającego się kodu (logiki) i wykorzystanie z wieloma komponentami. Niestety jeżeli używamy wiele HoC jednocześnie, aplikacja może stać się mniej wydajna i ryzykujemy przykrywanie się nazw props.
 
 ## Zadanie
 
-- Dodaj nowy komponent - `Bubble` - jako eksport nazwany w pliku `./src/Message.js`
-- Komponent `ChatScreen` powinien przyjmować komponent, który ma być użyty do wygenerowania wiadomości jako prop `renderMessage`
-- W komponencie `App` dodaj dwa guziki:
-
-  - "Wyświetl jako lista" - zmienia widok na listę, używającą `Message`
-  - "Wyświetl jako bąbelki" - zmienia widok na listę, używającą `Bubble`
-
-## Uwagi
-
-Jeżeli CSS nie jest Twoim ulubionym sposobem spędzania wolnego czasu, nie musisz sprawiać, by komponent `Bubble` wyglądał spektakularnie. Wystarczy, że ma odpowiednią nazwę.
+- Zmień funkcję `withChat` na `ChatProvider` i wyeksportuj jako nazwany eksport
+- `ChatProvider` powinien renderować swoje dziecko i przekazywać do niego:
+  - `isLoading`
+  - `data`
+  - `create`
+- Komponent `ChatScreen` powinien używać `ChatProvider` w celu pobrania interesujących go danych
+- Dodatkowo, komponent `ChatScreen` powinien wyświetlić nagłówek "Witaj na Chacie" nad listą wiadomości (poza `<ChatProvider>` !). W celu sprawdzenia, czy komponent ten nie ulega re-renderowaniu, wyświetl w nim dodatkowo jakąś losową treść (np. `Math.random()`).
