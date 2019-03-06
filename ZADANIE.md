@@ -1,18 +1,14 @@
-# #20 High Order Component
-
-Usuńmy logikę pobierania danych z komponentu prezentacyjnego.
+# #21 Render props
 
 ## Zadanie
 
-- Utwórz "provider" `withChat`, który wyeksportuj jako eksport nazwany z pliku `./src/providers/chat.js`
-- Komponent ten powinien tak samo jak do tej pory:
+- Dodaj nowy komponent - `Bubble` - jako eksport nazwany w pliku `./src/Message.js`
+- Komponent `ChatScreen` powinien przyjmować komponent, który ma być użyty do wygenerowania wiadomości jako prop `renderMessage`
+- W komponencie `App` dodaj dwa guziki:
 
-  - pobierać dane chata po zamontowaniu
-  - po odmontowaniu usuwać mechanizm pobierania danych cyklicznie
-  - posiadać mechanizm publikowania danych
-  - do "owijanego" komponentu przekazuje:
-    - `isLoading` - Boolean (owijany komponent wciąż decyduje, czy pokazać informacje o pobieraniu danych)
-    - `data` - Array
-    - `create` - Function
+  - "Wyświetl jako lista" - zmienia widok na listę, używającą `Message`
+  - "Wyświetl jako bąbelki" - zmienia widok na listę, używającą `Bubble`
 
-- Zmodyfikuj komponent ekranu chatu tak, by używał on `withChat` w celu pobrania i wysyłania danych
+## Uwagi
+
+Jeżeli CSS nie jest Twoim ulubionym sposobem spędzania wolnego czasu, nie musisz sprawiać, by komponent `Bubble` wyglądał spektakularnie. Wystarczy, że ma odpowiednią nazwę.
