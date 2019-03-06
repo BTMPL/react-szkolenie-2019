@@ -8,7 +8,7 @@ React Hooks to nowy sposób tworzenia komponentów w React 16.8 - umożliwia on 
 
 ## Podpowiedź
 
-`React.useState()` przyjmuje funkcję jako wartość. W takim wypadku zostanie ona wywołana i jej zwrócona wartość zostanie ustawiona jako stan. Jeżeli chcesz użyć komponent jako początkową wartość użyj następującej notacji:
+`React.useState()` (oraz updater!) przyjmuje funkcję jako wartość. W takim wypadku zostanie ona wywołana i jej zwrócona wartość zostanie ustawiona jako stan. Jeżeli chcesz użyć komponent jako początkową wartość użyj następującej notacji:
 
 ```js
 // React.useState(Component); // ŹLE!
