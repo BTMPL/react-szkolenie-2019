@@ -1,17 +1,15 @@
-# #20 Render prop
+# #20 High Order Component
 
-Dodajmy nieco lepszą parametryzację komponentu `MessageForm`
-
-## Uwaga
-
-Testy pokrywają komponent `MessageForm` eksportowany z pliku `./src/MessageForm.js` - jeżeli zmieniłeś strukturę w swoim projekcie, proszę przywróć ją (np. kopiując rozwiązanie z poprzedniego brancha) lub zmień ją też w testach.
+Usuńmy logikę pobierania danych z komponentu prezentacyjnego.
 
 ## Zadanie
 
-- Zmodyfikuj komponent `MessageForm` tak, by ofertował on render prop o nazwie `renderButton`
-- Jeżeli nie ma on żadnej wartości, guzik nie powinien być renderowany
-- Przekazana do niego funkcja wywołana jest z obiektem zawierającym pola `disabled` (jeżeli nie wpisano wartości) i `onClick` obsługujący wysyłkę formularza (możesz usunąć te logikę z `onSubmit`)
+- Utwórz "provider" `withChat`, który wyeksportuj jako eksport nazwany z pliku `./src/providers/chat.js`
+- Komponent ten powinien tak samo jak do tej pory:
 
-## Notatki
+  - pobierać dane chata po zamontowaniu
+  - po odmontowaniu usuwać mechanizm pobierania danych cyklicznie
+  - posiadać mechanizm publikowania danych
+  - renderować przekazany komponent przekazując do niego `data` oraz `create`
 
-Przenoszenie tego typu logiki z `<form onSubmit>` do `<button onClick>` nie jest najlepszym rozwiązaniem w praktyce, ale pozwoli nam zobrazować mechanizm render prop.
+- Zmodyfikuj komponent ekranu chatu tak, by używał on `withChat` w celu pobrania i wysyłania danych
