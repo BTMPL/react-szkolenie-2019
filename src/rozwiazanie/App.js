@@ -4,7 +4,7 @@ import { Message } from "./Message";
 
 import styled from "styled-components";
 
-import { ChatScreen } from "./screens/Chat";
+import ChatScreen from "./screens/Chat";
 import { LoginScreen } from "./screens/Login";
 
 const Layout = styled.div`
