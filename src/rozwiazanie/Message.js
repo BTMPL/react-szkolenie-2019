@@ -12,13 +12,27 @@ const Container = styled.div`
   }
 `;
 
+const BubbleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px;
+
+  p {
+    flex: 1;
+    background: #e7e7e7;
+    border-radius: 16px;
+    margin: 0 10px;
+    padding: 10px;
+  }
+`;
+
 const Author = styled.span`
   font-weight: bold;
   margin-right: 5px;
 `;
 
-export const Message = ({ userName, time, message }) => (
-  <Container>
+export const Message = ({ userName, time, message, key }) => (
+  <Container key={key}>
     <Author>{userName}</Author>
     <time>
       {new Date(time)
@@ -43,4 +57,20 @@ Message.propTypes = {
 
 Message.defaultProps = {
   userName: "Anonim"
+};
+
+export const Bubble = ({ userName, time, message, key }) => {
+  const date = `${new Date(time)
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${new Date(time)
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`;
+  return (
+    <BubbleContainer key={key} title={date}>
+      <Author>{userName}</Author>
+      <p>{message}</p>
+    </BubbleContainer>
+  );
 };
