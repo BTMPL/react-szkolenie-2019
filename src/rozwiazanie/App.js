@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Message } from "./Message";
+import { Message, Bubble } from "./Message";
 
 import styled from "styled-components";
 
@@ -20,29 +20,28 @@ const Layout = styled.div`
   }
 `;
 
-export class App extends React.Component {
-  state = {
-    login: undefined
-  };
+export const App = () => {
+  const [login, setLogin] = React.useState(undefined);
+  const [messageComponent, setMessageComponent] = React.useState(() => Message);
 
-  render() {
-    return (
-      <Layout>
-        {this.state.login ? (
-          <ChatScreen login={this.state.login} />
-        ) : (
-          <LoginScreen
-            onNameChange={name =>
-              this.setState({
-                login: name
-              })
-            }
-          />
-        )}
-      </Layout>
-    );
-  }
-}
+  return (
+    <Layout>
+      {login ? (
+        <div>
+          <ChatScreen login={login} renderMessage={messageComponent} />
+          <button onClick={() => setMessageComponent(() => Message)}>
+            Wyświetl jako lista
+          </button>
+          <button onClick={() => setMessageComponent(() => Bubble)}>
+            Wyświetl jako bąbelki
+          </button>
+        </div>
+      ) : (
+        <LoginScreen onNameChange={setLogin} />
+      )}
+    </Layout>
+  );
+};
 
 App.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape(Message.propTypes))

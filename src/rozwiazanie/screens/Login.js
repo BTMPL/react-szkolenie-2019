@@ -15,28 +15,21 @@ const Container = styled.div`
   }
 `;
 
-export class LoginScreen extends React.Component {
-  state = {
-    error: false
-  };
-
-  render() {
-    return (
-      <Container>
-        <MessageForm
-          button={"Zaloguj"}
-          onMessage={name => {
-            if (!name.trim()) {
-              this.setState({
-                error: true
-              });
-            } else {
-              this.props.onNameChange(name);
-            }
-          }}
-        />
-        {this.state.error && <p>Podaj imię</p>}
-      </Container>
-    );
-  }
-}
+export const LoginScreen = ({ onNameChange = () => {} }) => {
+  const [error, setError] = React.useState(false);
+  return (
+    <Container>
+      <MessageForm
+        button={"Zaloguj"}
+        onMessage={name => {
+          if (!name.trim()) {
+            setError(true);
+          } else {
+            onNameChange(name);
+          }
+        }}
+      />
+      {error && <p>Podaj imię</p>}
+    </Container>
+  );
+};
